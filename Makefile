@@ -100,10 +100,9 @@ dist: clean ## builds source and wheel package
 
 docker-build: ## build a docker image for the service
 	docker build --platform=linux/amd64 -t pyard-api:$(PYARD_VERSION) .
-	docker tag pyard-api:$(PYARD_VERSION)
 
 docker: docker-build ## build a docker image and run the service
-	docker run --platform=linux/amd64 --rm --name pyard-service -p 8080:8080 nmdpbioinformatics/pyard-service:$(PYARD_VERSION).linux-amd64
+	docker run --platform=linux/amd64 --rm --name pyard-api -p 8080:8080 pyard-api:$(PYARD_VERSION)
 
 install: clean ## install the package to the active Python's site-packages
 	pip install --upgrade pip

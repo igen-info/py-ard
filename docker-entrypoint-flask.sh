@@ -10,7 +10,4 @@ if [ "${WORKER_PROCESSES}" != "1" ]; then
   WORKER_FLAG="--workers=${WORKER_PROCESSES}"
 fi
 
-# Import the latest pyard before starting the app
-pyard-import
-
 gunicorn --preload --bind 0.0.0.0:8080 --timeout 5000 --log-level info "${WORKER_FLAG}" app:app

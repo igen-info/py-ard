@@ -14,6 +14,7 @@ COPY requirements-deploy.txt /app
 RUN pip install --no-cache-dir -r requirements-deploy.txt
 
 RUN pip install --no-cache-dir py-ard==$PY_ARD_VERSION
+RUN pyard-import
 
 COPY app.py /app/
 COPY api.py /app/
